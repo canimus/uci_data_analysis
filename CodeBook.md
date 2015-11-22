@@ -13,4 +13,13 @@ This file includes a brief explanation of the **run_analysis.R** file performs a
 
 The first step in the analysis is obtaining the source files for the analysis. These files are available in the following URL.
 
-`https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip` 
+`https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip`
+
+After completing the download from the URL provided the downloaded file is placed in a temporary folder and extracted for analysis.
+
+```R
+temp <- tempfile()
+download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", temp)
+unzip(temp)
+unlink(temp)
+```
