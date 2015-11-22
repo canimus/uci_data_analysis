@@ -2,6 +2,13 @@
 library(dplyr)
 library(data.table)
 
+
+# Download Data
+temp <- tempfile()
+download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", temp)
+unzip(temp)
+unlink(temp)
+
 # Course Project 2: Wearable Metrics
 # 1. Merges the training and the test sets to create one data set.
 # ------------------------------------------------------------------------
@@ -42,7 +49,7 @@ colnames(tidy.df) <- c(as.character(features.filtered$V2), "activity_id", "subje
 
 
 # 3. Uses descriptive activity names to name the activities in the data set
-# 4. Appropriately labels the data set with descriptive variable names. 
+# 4. Appropriately labels the data set with descriptive variable names.
 # ------------------------------------------------------------------------
 activity.labels <- read.table("uci_dataset_source/activity_labels.txt")
 colnames(activity.labels) <- c("activity_id", "activity_name")
@@ -53,7 +60,7 @@ tidy.df <- merge(tidy.df, activity.labels, by="activity_id", type = "right", all
 # ------------------------------------------------------------------------
 
 
-# 5. From the data set in step 4, creates a second, independent 
+# 5. From the data set in step 4, creates a second, independent
 #    tidy data set with the average of each variable for each activity and each subject.
 # ------------------------------------------------------------------------
 tidy.df.means <- tidy.df %>% group_by(activity_name,subject_id) %>% summarise_each(funs(mean))
