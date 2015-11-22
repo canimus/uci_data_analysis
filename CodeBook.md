@@ -36,3 +36,12 @@ This section incorporates combining the **training** and **test** data into a si
 4. SITTING
 5. STANDING
 6. LAYING
+
+
+## Filtering based on Features
+
+The following line obtains the list of indexes in the columns that will be used in the `tidy.df` data frame. This line collects the required means and standard deviation columns required in the study.
+
+```R
+features.filtered <- rbind(features[grep("mean\\(", features$V2),], features[grep("std\\(", features$V2),])
+```
