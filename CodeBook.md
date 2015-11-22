@@ -49,3 +49,29 @@ The following line obtains the list of indexes in the columns that will be used 
 ```R
 features.filtered <- rbind(features[grep("mean\\(", features$V2),], features[grep("std\\(", features$V2),])
 ```
+
+## Adding Meaningful labels
+
+The main tidy data frame contains only the standard `V#` headers or column names. To assist in the understanding of the data, we will be using the features text file available in the source files to allocate the required header names to the tidy data frame.
+
+Examples of this headers are provided in the originated files but look like:
+```R
+> as.list(head(names(tidy.df)))
+[[1]]
+[1] "activity_id"
+
+[[2]]
+[1] "tBodyAcc-mean()-X"
+
+[[3]]
+[1] "tBodyAcc-mean()-Y"
+
+[[4]]
+[1] "tBodyAcc-mean()-Z"
+
+[[5]]
+[1] "tGravityAcc-mean()-X"
+
+[[6]]
+[1] "tGravityAcc-mean()-Y"
+```
