@@ -87,3 +87,5 @@ tidy.df.means <- tidy.df %>% group_by(activity_name,subject_id) %>% summarise_ea
 # Wriring CSV File
 write.csv(tidy.df.means, "tidy_data_table.txt", row.names=FALSE)
 ```
+
+> **output:**  tidy_data_table.txt
