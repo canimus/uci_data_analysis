@@ -15,7 +15,7 @@ The first step in the analysis is obtaining the source files for the analysis. T
 
 `https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip`
 
-After completing the download from the URL provided the downloaded file is placed in a temporary folder and extracted for analysis.
+After completing the download from the URL provided the downloaded file is placed in a temporary folder and extracted for analysis. Last step is closing the connection for the open file.
 
 ```R
 temp <- tempfile()
@@ -23,3 +23,15 @@ download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUC
 unzip(temp)
 unlink(temp)
 ```
+
+## Merging Data Sets
+
+This section incorporates combining the **training** and **test** data into a single data frame. Each of the files in the source data contains metrics, activities and subjects. Subjects represent the people wearing the band or devices, and activities represent the different types of activities measured by the wearable device.
+
+** Activities Logged are:***
+1. WALKING
+2. WALKING_UPSTAIRS
+3. WALKING_DOWNSTAIRS
+4. SITTING
+5. STANDING
+6. LAYING
