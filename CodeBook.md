@@ -11,7 +11,7 @@ This file includes a brief explanation of the **run_analysis.R** file performs a
 - Merging Data Sets
 - Filtering based on Features
 - Adding Meaningful labels
-- Writing a tidy data set into a CSV file
+- Writing tidy data set into a CSV file
 
 ## Download Files
 
@@ -74,4 +74,16 @@ Examples of this headers are provided in the originated files but look like:
 
 [[6]]
 [1] "tGravityAcc-mean()-Y"
+```
+
+Following the principles of tidy data, each observation is in 1 row, and each column contains only 1 value.
+
+## Writing tidy data set into a CSV file
+
+The following line collects the statistics using the `dplyr` package to create summaries per column and grouping based on the activity and the individual. The approach by this operation is to minimise the assignment of variables and handle the summary in a pipeline form with concatenated instructions.
+
+```R
+tidy.df.means <- tidy.df %>% group_by(activity_name,subject_id) %>% summarise_each(funs(mean))
+# Wriring CSV File
+write.csv(tidy.df.means, "tidy_data_table.txt", row.names=FALSE)
 ```
