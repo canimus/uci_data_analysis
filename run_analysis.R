@@ -2,7 +2,6 @@
 library(dplyr)
 library(data.table)
 
-
 # Download Data
 temp <- tempfile()
 download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", temp)
@@ -13,14 +12,14 @@ unlink(temp)
 # 1. Merges the training and the test sets to create one data set.
 # ------------------------------------------------------------------------
 # Read the training data frames
-train.x <- read.table("uci_dataset_source/train/X_train.txt")
-train.y <- read.table("uci_dataset_source/train/y_train.txt")
-train.subject <- read.table("uci_dataset_source/train/subject_train.txt")
+train.x <- read.table("UCI HAR Dataset/train/X_train.txt")
+train.y <- read.table("UCI HAR Dataset/train/y_train.txt")
+train.subject <- read.table("UCI HAR Dataset/train/subject_train.txt")
 
 # Read the test data frames
-test.x <- read.table("uci_dataset_source/test/X_test.txt")
-test.y <- read.table("uci_dataset_source/test/y_test.txt")
-test.subject <- read.table("uci_dataset_source/test/subject_test.txt")
+test.x <- read.table("UCI HAR Dataset/test/X_test.txt")
+test.y <- read.table("UCI HAR Dataset/test/y_test.txt")
+test.subject <- read.table("UCI HAR Dataset/test/subject_test.txt")
 
 # Merging test and training for each measurement
 merge.x <- rbind(train.x, test.x)
@@ -37,7 +36,7 @@ tidy.df <- cbind(merge.x, merge.y, merge.subject)
 # 2. Extracts only the measurements on the mean and standard deviation for each measurement.
 # ------------------------------------------------------------------------
 # Reading the feagures
-features <- read.table("uci_dataset_source/features.txt")
+features <- read.table("UCI HAR Dataset/features.txt")
 
 # Extracting only the mean and the standard deviation into features.filtered
 features.filtered <- rbind(features[grep("mean\\(", features$V2),], features[grep("std\\(", features$V2),])
@@ -51,7 +50,7 @@ colnames(tidy.df) <- c(as.character(features.filtered$V2), "activity_id", "subje
 # 3. Uses descriptive activity names to name the activities in the data set
 # 4. Appropriately labels the data set with descriptive variable names.
 # ------------------------------------------------------------------------
-activity.labels <- read.table("uci_dataset_source/activity_labels.txt")
+activity.labels <- read.table("UCI HAR Dataset/activity_labels.txt")
 colnames(activity.labels) <- c("activity_id", "activity_name")
 
 
