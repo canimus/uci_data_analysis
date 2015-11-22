@@ -46,6 +46,8 @@ This section incorporates combining the **training** and **test** data into a si
 
 The following line obtains the list of indexes in the columns that will be used in the `tidy.df` data frame. This line collects the required means and standard deviation columns required in the study.
 
+The `grep` command in R allows the use of regular expressions to match specific strings and obtain the matching conditions in a data frame. One important aspect during the implementation of this filtering routine is the use of scape characters for `(` using the `\` back slash scape character.
+
 ```R
 features.filtered <- rbind(features[grep("mean\\(", features$V2),], features[grep("std\\(", features$V2),])
 ```
