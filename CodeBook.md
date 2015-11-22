@@ -2,7 +2,9 @@
 
 This file includes a brief explanation of the **run_analysis.R** file performs an analysis over the data set provided by the UCI in the area of Human Activity Recognition Using Smartphones Data Set.
 
-> **output:** tidy_data_table.txt
+
+
+> **Notice:** To successfully run this R file an internet connection is required to download the source files from a specific URL
 
 ### Structure of file
 - Download Files
